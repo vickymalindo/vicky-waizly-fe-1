@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000;
+  --color: #fff;
+}
+
+[data-theme='light'] {
+  --background: #fff;
+  --color: #000;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--color);
+  transition: all ease-in-out 0.25s;
+}
