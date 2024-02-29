@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { CiLogout } from 'react-icons/ci';
 import { IoMoonOutline } from 'react-icons/io5';
 import { MdOutlineGTranslate, MdOutlineWbSunny } from 'react-icons/md';
 
@@ -40,15 +38,14 @@ const Navbar = () => {
         </div>
 
         <Link to="/notes-done" className="text-xl">
-          {lan.link}
+          {lan.linkNote}
+        </Link>
+        <Link to="/weather" className="text-xl">
+          {lan.linkWeather}
         </Link>
       </div>
     </header>
   );
 };
-
-// Navbar.propTypes = {
-//   name: PropTypes.string,
-// };
 
 export default Navbar;

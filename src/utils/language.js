@@ -34,7 +34,8 @@ const language = {
     },
     navbar: {
       title: 'Notes App | Vicky',
-      link: 'Completed',
+      linkNote: 'Completed',
+      linkWeather: 'Weather',
     },
     active: {
       title: 'Active Notes',
@@ -96,7 +97,8 @@ const language = {
     },
     navbar: {
       title: 'Aplikasi Catatan | Vicky',
-      link: 'Selesai',
+      linkNote: 'Selesai',
+      linkWeather: 'Cuaca',
     },
     active: {
       title: 'Catatan Aktif',

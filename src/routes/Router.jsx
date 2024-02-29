@@ -5,6 +5,7 @@ import AddNote from '../pages/AddNote';
 import Complete from '../pages/Complete';
 import DetailNote from '../pages/DetailNote';
 import PageNotFound from '../pages/PageNotFound';
+import Weather from '../pages/Weather';
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const Router = createBrowserRouter([
   {
     path: '/note/:id',
     element: <DetailNote />,
+  },
+  {
+    path: '/weather',
+    element: <Weather />,
   },
   {
     path: '*',

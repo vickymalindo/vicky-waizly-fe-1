@@ -11,7 +11,6 @@ import { getActiveNotes } from '../utils/data';
 
 const Active = () => {
   const [search, setSearch] = React.useState('');
-  // const [user, setUser] = React.useState({});
   const [notes, setNotes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const { lang } = useContext(LanguageContext);
