@@ -1,35 +1,31 @@
-import React, { useContext } from "react";
-import Card from "../components/Card";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
-import Search from "../components/Search";
-import Wrapper from "../components/Wrapper";
-import LanguageContext from "../context/LangContext";
-// import { getArchivedNotes } from '../utils/data';
-import language from "../utils/language";
-import { getArchivedNotes } from "../utils/data";
+import React, { useContext } from 'react';
+import Card from '../components/Card';
+import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
+import Search from '../components/Search';
+import Wrapper from '../components/Wrapper';
+import LanguageContext from '../context/LangContext';
+import language from '../utils/language';
+import { getArchivedNotes } from '../utils/data';
 
-const Archive = () => {
-  const [search, setSearch] = React.useState("");
-  const [user, setUser] = React.useState({});
+const Complete = () => {
+  const [search, setSearch] = React.useState('');
   const [notes, setNotes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const { lang } = useContext(LanguageContext);
   const lan = language[lang].archive;
-  console.log(lan);
 
-  const getData = async () => {
-    // const resUser = await getUserLogged({ options });
+  const getData = () => {
     const resArchivedNotes = getArchivedNotes();
-    console.log(resArchivedNotes);
-    // const { data: user } = resUser;
-    // setUser(user);
     setNotes(resArchivedNotes);
     setIsLoading((prev) => !prev);
   };
 
   React.useEffect(() => {
-    getData();
+    setTimeout(() => {
+      getData();
+      setIsLoading((prev) => (prev = false));
+    }, 1200);
   }, []);
 
   return (
@@ -38,7 +34,7 @@ const Archive = () => {
         <Loader />
       ) : (
         <>
-          <Navbar name={user.name} />
+          <Navbar />
           <Search setSearch={(val) => setSearch(val)} />
 
           <Wrapper title={lan.title}>
@@ -67,4 +63,4 @@ const Archive = () => {
     </div>
   );
 };
-export default Archive;
+export default Complete;

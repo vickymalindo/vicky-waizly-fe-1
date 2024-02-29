@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Form from '../components/Form';
 import Navbar from '../components/Navbar';
 import { addNote } from '../utils/data';
-import { options } from '../utils/optionFetch';
 
 const AddNote = () => {
   const [title, setTitle] = React.useState('');

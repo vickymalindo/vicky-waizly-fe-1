@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import LanguageContext from "../context/LangContext";
+import React, { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import LanguageContext from '../context/LangContext';
 import {
   showFormattedDate,
   getNote,
   moveNote,
   deleteNote,
-} from "../utils/data";
+} from '../utils/data';
 
 const DetailNote = () => {
   const [note, setNote] = React.useState({});
@@ -27,16 +27,16 @@ const DetailNote = () => {
   }, []);
 
   const handleDelete = () => {
-    const confirmation = confirm("Are you sure want to delete?");
+    const confirmation = confirm('Are you sure want to delete?');
     if (confirmation) {
       setLoadingDelete((prev) => !prev);
       setTimeout(() => {
         const res = deleteNote(+id);
         const error = res;
         if (error) {
-          alert("Error, cant delete data");
+          alert('Error, cant delete data');
         } else {
-          alert("Success delete data");
+          alert('Success delete data');
           navigate(-1);
         }
         setLoadingDelete((prev) => !prev);
@@ -49,12 +49,12 @@ const DetailNote = () => {
     setTimeout(() => {
       if (!note.archived) {
         moveNote(+id);
-        alert("Success archived note");
-        navigate("/");
+        alert('Success archived note');
+        navigate(-1);
       } else {
         moveNote(+id);
-        alert("Success actived note");
-        navigate("/notes-archive");
+        alert('Success actived note');
+        navigate(-1);
       }
       setLoadingMove((prev) => !prev);
     }, 1100);
@@ -97,15 +97,15 @@ const DetailNote = () => {
                   />
                 </svg>
               ) : note.archived === false ? (
-                lang === "en" ? (
-                  "Done"
+                lang === 'en' ? (
+                  'Done'
                 ) : (
-                  "Selesai"
+                  'Selesai'
                 )
-              ) : lang === "en" ? (
-                "Active"
+              ) : lang === 'en' ? (
+                'Active'
               ) : (
-                "Aktif"
+                'Aktif'
               )}
             </button>
             <button
@@ -129,10 +129,10 @@ const DetailNote = () => {
                     fill="currentFill"
                   />
                 </svg>
-              ) : lang === "en" ? (
-                "Delete"
+              ) : lang === 'en' ? (
+                'Delete'
               ) : (
-                "Hapus"
+                'Hapus'
               )}
             </button>
           </div>

@@ -6,9 +6,7 @@ import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import Wrapper from '../components/Wrapper';
 import LanguageContext from '../context/LangContext';
-// import { getActiveNotes } from '../utils/data';
 import language from '../utils/language';
-import { options } from './../utils/optionFetch';
 import { getActiveNotes } from '../utils/data';
 
 const Active = () => {
@@ -21,11 +19,7 @@ const Active = () => {
 
   const getData = async () => {
     setTimeout(() => {
-      // const resUser = await getUserLogged({ options });
       const resActiveNotes = getActiveNotes();
-      // const { data: user } = resUser;
-      // console.log(user);
-      // setUser(user);
       setNotes(resActiveNotes);
       setIsLoading((prev) => !prev);
     }, 1500);
