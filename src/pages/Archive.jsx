@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
-import Card from '../components/Card';
-import Loader from '../components/Loader';
-import Navbar from '../components/Navbar';
-import Search from '../components/Search';
-import Wrapper from '../components/Wrapper';
-import LanguageContext from '../context/LangContext';
+import React, { useContext } from "react";
+import Card from "../components/Card";
+import Loader from "../components/Loader";
+import Navbar from "../components/Navbar";
+import Search from "../components/Search";
+import Wrapper from "../components/Wrapper";
+import LanguageContext from "../context/LangContext";
 // import { getArchivedNotes } from '../utils/data';
-import language from '../utils/language';
-import { options } from '../utils/optionFetch';
-import { getArchivedNotes } from '../utils/data';
+import language from "../utils/language";
+import { getArchivedNotes } from "../utils/data";
 
 const Archive = () => {
-  const [search, setSearch] = React.useState('');
+  const [search, setSearch] = React.useState("");
   const [user, setUser] = React.useState({});
   const [notes, setNotes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -22,6 +21,7 @@ const Archive = () => {
   const getData = async () => {
     // const resUser = await getUserLogged({ options });
     const resArchivedNotes = getArchivedNotes();
+    console.log(resArchivedNotes);
     // const { data: user } = resUser;
     // setUser(user);
     setNotes(resArchivedNotes);

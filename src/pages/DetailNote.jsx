@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import LanguageContext from '../context/LangContext';
+import React, { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import LanguageContext from "../context/LangContext";
 // import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/data';
 
-import { showFormattedDate, getNote, moveNote } from '../utils/data';
+import {
+  showFormattedDate,
+  getNote,
+  moveNote,
+  deleteNote,
+} from "../utils/data";
 
 const DetailNote = () => {
   const [note, setNote] = React.useState({});
@@ -22,11 +27,14 @@ const DetailNote = () => {
   }, []);
 
   const handleDelete = async () => {
-    const confirmation = confirm('Are you sure want to delete?');
+    const confirmation = confirm("Are you sure want to delete?");
     if (confirmation) {
-      const res = await deleteNote(id);
-      const { error } = res;
-      if (!error) {
+      const res = deleteNote(+id);
+      const error = res;
+      if (error) {
+        alert("Error, cant delete data");
+      } else {
+        alert("Success delete data");
         navigate(-1);
       }
     }
@@ -35,12 +43,12 @@ const DetailNote = () => {
   const handleMove = async () => {
     if (!note.archived) {
       moveNote(+id);
-      alert('Success archived note');
-      navigate('/');
+      alert("Success archived note");
+      navigate("/");
     } else {
-      moveNote(id);
-      alert('Success actived note');
-      navigate('/notes-archive');
+      moveNote(+id);
+      alert("Success actived note");
+      navigate("/notes-archive");
     }
   };
 
@@ -64,18 +72,18 @@ const DetailNote = () => {
               onClick={handleMove}
             >
               {note.archived === false
-                ? lang === 'en'
-                  ? 'Archive'
-                  : 'Arsip'
-                : lang === 'en'
-                ? 'Active'
-                : 'Aktif'}
+                ? lang === "en"
+                  ? "Done"
+                  : "Selesai"
+                : lang === "en"
+                ? "Active"
+                : "Aktif"}
             </button>
             <button
               className="bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:focus:ring-red-900 inline-block w-1/2"
               onClick={handleDelete}
             >
-              {lang === 'en' ? 'Delete' : 'Hapus'}
+              {lang === "en" ? "Delete" : "Hapus"}
             </button>
           </div>
         </div>
